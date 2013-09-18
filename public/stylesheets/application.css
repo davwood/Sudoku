@@ -5,6 +5,10 @@ div.box, div.cell {
 .cell input {
   width: 30px;
   height: 30px;
+  text-align: center;
+  outline-style:solid;
+	outline-width:0.8px;
+	outline-color:#323232
 }
 
 #sudoku {
@@ -15,4 +19,22 @@ div.box, div.cell {
 body {
   text-align: center;
   font-family: Arial;
+}
+
+.incorrect {
+  background-color: yellow;
+}
+
+.value-provided {
+  background-color: #DDD;
+}
+
+/*.box  {
+	border-style:solid;
+	border-width:5px;
+}*/
+
+.box {
+	outline-style:solid;
+	outline-width:3px;
 }
