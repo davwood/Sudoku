@@ -1,9 +1,33 @@
-<h1>Life is too short for playing Sudoku</h1>
+<div class="topbar">
+  <h1>Life is too short for playing Sudoku</h1>
+  <br>
+  <h3>Select your difficulty</h3>
+
+
+    <div class="button-container">
+      <form action="/easy" name="easy">
+      <div>
+        <button>Easy</button>
+      </div>
+      </form>
+      <form action="/average" name="average">
+        <div>
+          <button>Average</button>
+         </div>
+      </form>
+      <form action="/hard" name="hard">
+        <div>
+          <button>Hard</button>
+         </div>
+      </form>
+    </div>
+
 <div id="flash">
   <%= flash[:notice] %>
 </div>
+</div>
 <div id="sudoku">
-  <form action="/" method="POST">
+  <form id="check" action="/" method="POST">
   <!-- one div for each row -->
   <% 3.times do |row| %>
     <div class='row'>
@@ -27,11 +51,17 @@
     <% end %>
       <!-- all boxes, rows and cells -->
       <button>Check solution</button>
-    </form>
-    <form action="/solution">
-      <button>I give up show me the answer!</button>
-    </form>
-    <form action="/reset" method="POST">
-      <button>Give me a new puzzle</button>
   </form>
-  </div>
+</div>
+
+    <div class="reset">
+      <form action="/solution">
+        <button>I give up show me the answer!</button>
+      </form>
+      <form action="/reset" method="POST">
+        <div>
+          <button>Give me a new puzzle</button>
+        </div>
+      </form>
+    </div>
+ 

@@ -20,7 +20,12 @@ def generate_new_puzzle_if_necessary
   return if session[:current_solution]
   sudoku = random_sudoku
   session[:solution] = sudoku
-  session[:puzzle] = puzzle(sudoku)
+  removed_cells =  case session[:difficulty] 
+                        when 1 then 35
+                        when 3 then 60
+                        else 45
+                        end
+  session[:puzzle] = puzzle(sudoku,removed_cells)
   session[:current_solution] = session[:puzzle]    
 end
 
@@ -33,9 +38,9 @@ end
 end
 
 # this method removes some digits from the solution to create a puzzle
-def puzzle(sudoku)
+def puzzle(sudoku,removed_cells=20)
   # this method is yours to implement
-    random = (0..81).to_a.sample(20)
+    random = (0..81).to_a.sample(removed_cells)
     @puzzled = []
     sudoku.each_with_index do |element,index|
                 if random.include?(index) then @puzzled.push(0)
@@ -56,7 +61,26 @@ get '/' do
   erb :index
 end
 
+get '/easy' do
+    session[:current_solution] = nil
+    session[:difficulty] = 1
+    redirect to("/")
+end
+
+get '/average' do
+    session[:current_solution] = nil
+    session[:difficulty] = 2
+    redirect to("/")
+end
+
+get '/hard' do
+    session[:current_solution] = nil
+    session[:difficulty] = 3
+    redirect to("/")
+end
+
 get '/solution' do
+  redirect to("/") if session[:solution].nil?
   @current_solution = session[:solution]
   @solution = session[:solution]
   @puzzle = session[:puzzle]

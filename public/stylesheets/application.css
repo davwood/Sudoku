@@ -3,12 +3,12 @@ div.box, div.cell {
 }
 
 .cell input {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   text-align: center;
   outline-style:solid;
-	outline-width:0.8px;
-	outline-color:#323232
+  outline-width:0.8px;
+  outline-color:#323232
 }
 
 #sudoku {
@@ -18,7 +18,13 @@ div.box, div.cell {
 
 body {
   text-align: center;
-  font-family: Arial;
+  font-family: 'Raleway', sans-serif;
+  background:url("../img/background.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover; 
+  -moz-background-size: cover; 
+  -o-background-size: cover; 
+  background-size: cover; 
+  font-size:14px;
 }
 
 .incorrect {
@@ -29,11 +35,6 @@ body {
   background-color: #DDD;
 }
 
-/*.box  {
-	border-style:solid;
-	border-width:5px;
-}*/
-
 .box {
 	outline-style:solid;
 	outline-width:3px;
@@ -42,3 +43,78 @@ body {
 #flash {
   margin: 20px;
 }
+
+
+.button-container form,
+.button-container form div {
+    display: inline;
+}
+
+
+button {
+	vertical-align:middle;
+}
+
+.button-container button {
+    display: inline;
+	text-align:center;
+	font-family: 'Raleway', sans-serif;
+	color:#1F1B1C;
+	font-size:12px;
+	vertical-align: middle;
+	margin-left:20px;
+	width:140px;
+	height:31px;
+	line-height:31px;
+	margin-bottom: 10px;
+}
+
+.topbar {
+	background-color:rgba(200,189,200,0.5); 
+    margin:0px auto 5px auto; 
+    border:1px solid gray; 
+    border-top-left-radius: 10px 5px; 
+    border-bottom-right-radius: 10% 5%; 
+    border-top-right-radius: 10px;  
+}
+
+.reset form, .reset form div {
+    display: inline;
+}
+
+h3 {
+	-webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: black;
+   font-size:17px;
+}
+
+.reset button {
+    display: inline;
+	text-align:center;
+	font-family: 'Raleway', sans-serif;
+	color:#1F1B1C;
+	font-size:12px;
+	vertical-align: middle;
+	margin-left:10px;
+	width:200px;
+	height:31px;
+	line-height:31px;
+	margin-bottom: 10px;
+}
+
+#check button {
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+	color:#1F1B1C;
+	background-color:#E8C70C ;
+	font-size:12px;
+	vertical-align: text-middle;
+	height:31px;
+	line-height:31px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	border-radius:40px;
+	padding-bottom: 10px;
+}
+
+
