@@ -2,7 +2,10 @@ require 'sinatra'
 require_relative 'lib/sudoku'
 require_relative 'lib/cell'
 require 'sinatra/partial' 
+require 'rack-flash'
+use Rack::Flash
 set :partial_template_engine, :erb
+set :session_secret, "super secret"
 
 enable :sessions # sessions are disabled by default 
  
@@ -23,13 +26,15 @@ end
 
 def prepare_to_check_solution
   @check_solution = session[:check_solution]
+  if @check_solution
+    flash[:notice] = "Incorrect values are highlighted yellow"
+end
   session[:check_solution] = nil
 end
 
 # this method removes some digits from the solution to create a puzzle
 def puzzle(sudoku)
   # this method is yours to implement
-   # puzzled = sudoku.map {|element| if element.to_i == (1..9).to_a.sample.to_i then 0 else element end} 
     random = (0..81).to_a.sample(20)
     @puzzled = []
     sudoku.each_with_index do |element,index|
@@ -47,7 +52,7 @@ get '/' do
   @current_solution = session[:current_solution] || session[:puzzle]
   @solution = session[:solution]
   @puzzle = session[:puzzle]
-  
+
   erb :index
 end
 
@@ -59,10 +64,18 @@ get '/solution' do
 end
 
 post '/' do
-  cells = params["cell"]
+  boxes = params["cell"].each_slice(9).to_a
+  cells = (0..8).to_a.inject([]) {|memo, i|
+  memo += boxes[i/3*3, 3].map{|box| box[i%3*3, 3] }.flatten
+  }
   session[:current_solution] = cells.map{|value| value.to_i }.join
   session[:check_solution] = true
   redirect to("/")
+end
+
+post '/reset' do
+    session[:current_solution] = nil
+    redirect to("/")
 end
 
 helpers do

@@ -1,11 +1,7 @@
-<html>
-<head>
-  <title>Sudoku Game</title>   
-  <!-- link to the CSS stylesheet -->
-  <link href="/stylesheets/application.css" rel="stylesheet" type="text/css">
-</head>
-<body>
 <h1>Life is too short for playing Sudoku</h1>
+<div id="flash">
+  <%= flash[:notice] %>
+</div>
 <div id="sudoku">
   <form action="/" method="POST">
   <!-- one div for each row -->
@@ -20,10 +16,7 @@
              <% 3.times do |cell| %>
                   <div class="cell">
                     <!-- every cell will have an input field -->
-                    <% cell_index = row * 27 + box * 9 + cell_row * 3 + cell %>
-                    <% cell_value = cell_value(@current_solution[cell_index]) %>
-                    <% colour_class = colour_class(@check_solution, @puzzle[cell_index], @current_solution[cell_index], @solution[cell_index])  %>
-                    <input name="cell[]" class="<%= colour_class %>" type="text" maxlength="1" autocomplete="off" value=<%= cell_value %> >
+                    <%= partial :cell, :locals => { :cell_index => row * 27 + box * 3 + cell_row * 9 + cell } %>
                   </div>
                 <% end %>
               </div>
@@ -38,6 +31,7 @@
     <form action="/solution">
       <button>I give up show me the answer!</button>
     </form>
+    <form action="/reset" method="POST">
+      <button>Give me a new puzzle</button>
+  </form>
   </div>
-</body>
-</html>
