@@ -10,7 +10,7 @@ set :session_secret, "super secret"
 enable :sessions # sessions are disabled by default 
 
 configure :production do
-  require 'newrelic-rpm'
+  require 'newrelic_rpm'
 end
  
 def random_sudoku
