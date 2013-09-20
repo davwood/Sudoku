@@ -3,6 +3,7 @@ require_relative 'lib/sudoku'
 require_relative 'lib/cell'
 require 'sinatra/partial' 
 require 'rack-flash'
+require 'unicorn'
 use Rack::Flash
 set :partial_template_engine, :erb
 set :session_secret, "super secret"

@@ -1,12 +1,14 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    kgio (2.8.1)
     newrelic_rpm (3.6.7.152)
     rack (1.5.2)
     rack-flash3 (1.0.5)
       rack
     rack-protection (1.5.0)
       rack
+    raindrops (0.12.0)
     shotgun (0.9)
       rack (>= 1.0)
     sinatra (1.4.3)
@@ -16,6 +18,10 @@ GEM
     sinatra-partial (0.4.0)
       sinatra
     tilt (1.4.1)
+    unicorn (4.6.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
 
 PLATFORMS
   ruby
@@ -26,3 +32,4 @@ DEPENDENCIES
   shotgun
   sinatra
   sinatra-partial
+  unicorn
